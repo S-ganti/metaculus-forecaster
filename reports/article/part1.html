@@ -1,0 +1,391 @@
+<div class="doc">
+
+<header class="cover">
+  <div class="label">Companion to the Metaculus Forecaster · Part one</div>
+  <h1>The Slow Arithmetic <span>of Hunger</span></h1>
+  <p class="standfirst">Nobody sees a famine arrive. It is assembled, link by link, out of shortages that each take
+  weeks to pass along. A forecast of famine is mostly a statement about which link the clock has reached.</p>
+  <div class="ipcstrip" aria-label="The IPC food-insecurity scale used by FEWS NET">
+    <div class="p1">Phase 1<small>Minimal</small></div>
+    <div class="p2">Phase 2<small>Stressed</small></div>
+    <div class="p3">Phase 3<small>Crisis</small></div>
+    <div class="p4">Phase 4<small>Emergency</small></div>
+    <div class="p5">Phase 5<small>Famine</small></div>
+  </div>
+  <div class="cover-meta">
+    <div><span class="label">Sections</span><b>15</b></div>
+    <div><span class="label">Figures</span><b>14</b></div>
+    <div><span class="label">Forecast</span><b>1</b></div>
+    <div><span class="label">Data read</span><b>16 Oct 2026</b></div>
+  </div>
+</header>
+
+<section class="start">
+  <div class="col">
+    <div class="label">How to use this</div>
+    <h2 style="margin:0.3rem 0 1rem">Start here</h2>
+    <p>This document explains one forecasting model from the ground up and then uses it on one live question:
+    <em>will FEWS NET classify any area of Sudan as experiencing Famine before 2027?</em> It assumes you know
+    nothing about systems models or about famine classification. It finishes at the point where you could defend
+    the number in a room, and say which assumption would move it.</p>
+    <p>Part one is the concept, built in nine steps. Part two is the prediction. Each figure is drawn to make one
+    mechanism visible. Most are plotted from the model's own output; the four that are schematic say so in
+    their caption.</p>
+  </div>
+  <div class="onesent">
+    <span class="label">The one sentence</span>
+    <p>A shortage is a cause, and <b>causes take time to travel</b>. Scarcity Equilibrium writes down where a
+    shortage is, where it goes next and how long it takes to get there. The Sudan forecast below is mostly a
+    statement about time.</p>
+  </div>
+</section>
+
+<div class="part"><span class="label">Part one</span><span class="big">The concept</span></div>
+
+<!-- 01 -->
+<section class="sec" id="s01">
+  <div class="sechead"><span class="label">Section 01</span><span class="tag">first principles</span></div>
+  <h2>Why shortages are hard to forecast</h2>
+  <div class="col">
+    <p>Start with the unit. A forecaster is usually asked about one thing: a price, a vote, a declaration.
+    Shortages are awkward because the thing you are asked about is almost never the thing that broke first.
+    Famine is declared on deaths and wasting. It starts with roads, rain and money.</p>
+  </div>
+  <div class="label" style="margin-top:1.4rem">Three properties that force all the machinery</div>
+  <div class="three">
+    <div><span class="label">1 · Coupled</span><h4>Domains lean on each other</h4>
+      <p>Food depends on access, access on security, survival on nutrition. A shock to one is a shock to all of
+      them eventually.</p></div>
+    <div><span class="label">2 · Lagged</span><h4>Each link takes time</h4>
+      <p>Wasting does not kill on the day food runs out. Every link has a delay, and the delays add up along the
+      chain.</p></div>
+    <div><span class="label">3 · Thresholded</span><h4>Small changes do nothing</h4>
+      <p>Systems absorb small wobbles. Only a move past some tolerance starts dragging the neighbours.</p></div>
+  </div>
+  <div class="col">
+    <p>Put those together and simple extrapolation fails. A headline about hunger tells you one domain moved.
+    It does not tell you whether the move is big enough to travel, or how long it will take to reach the domain
+    the question resolves on.</p>
+  </div>
+  <figure>
+    <div class="fig-body">
+      <svg viewBox="0 0 760 330" role="img" aria-label="Flow diagram of the Sudan famine model: three external drivers push on a chain of six domains, from security to survival, with two feedback loops.">
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrowhead" d="M0,0 L10,5 L0,10 z"/></marker>
+          <marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrowhead r" d="M0,0 L10,5 L0,10 z"/></marker>
+          <marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrowhead b" d="M0,0 L10,5 L0,10 z"/></marker>
+        </defs>
+        <text class="axtitle" x="20" y="14">External drivers (do not recover on their own)</text>
+        <g class="node drv"><rect x="20" y="24" width="105" height="40"/><text x="72" y="42" text-anchor="middle">Conflict</text><text class="sub" x="72" y="56" text-anchor="middle">sieges</text></g>
+        <g class="node drv"><rect x="145" y="24" width="105" height="40"/><text x="197" y="42" text-anchor="middle">Aid funding</text><text class="sub" x="197" y="56" text-anchor="middle">rations</text></g>
+        <g class="node drv"><rect x="270" y="24" width="105" height="40"/><text x="322" y="42" text-anchor="middle">Displacement</text><text class="sub" x="322" y="56" text-anchor="middle">new arrivals</text></g>
+        <path class="arrow" d="M72,64 L72,126" marker-end="url(#ah)"/>
+        <path class="arrow" d="M197,64 L197,126" marker-end="url(#ah)"/>
+        <path class="arrow" d="M322,64 L322,126" marker-end="url(#ah)"/>
+
+        <text class="axtitle" x="20" y="120">The chain</text>
+        <g class="node"><rect x="20" y="130" width="105" height="52"/><text x="72" y="153" text-anchor="middle">Security</text><text class="sub" x="72" y="169" text-anchor="middle">fighting</text></g>
+        <g class="node"><rect x="145" y="130" width="105" height="52"/><text x="197" y="153" text-anchor="middle">Access</text><text class="sub" x="197" y="169" text-anchor="middle">roads, convoys</text></g>
+        <g class="node"><rect x="270" y="130" width="105" height="52"/><text x="322" y="153" text-anchor="middle">Food</text><text class="sub" x="322" y="169" text-anchor="middle">consumption</text></g>
+        <g class="node"><rect x="395" y="130" width="105" height="52"/><text x="447" y="153" text-anchor="middle">Purchasing</text><text class="sub" x="447" y="169" text-anchor="middle">prices, income</text></g>
+        <g class="node"><rect x="520" y="130" width="105" height="52"/><text x="572" y="153" text-anchor="middle">Nutrition</text><text class="sub" x="572" y="169" text-anchor="middle">wasting (GAM)</text></g>
+        <g class="node"><rect x="645" y="130" width="105" height="52"/><text x="697" y="153" text-anchor="middle">Survival</text><text class="sub" x="697" y="169" text-anchor="middle">death rate</text></g>
+        <path class="arrow" d="M125,156 L143,156" marker-end="url(#ah)"/>
+        <path class="arrow" d="M250,156 L268,156" marker-end="url(#ah)"/>
+        <path class="arrow" d="M375,156 L393,156" marker-end="url(#ah)"/>
+        <path class="arrow" d="M500,156 L518,156" marker-end="url(#ah)"/>
+        <path class="arrow" d="M625,156 L643,156" marker-end="url(#ah)"/>
+        <text class="lag" x="134" y="124" text-anchor="middle">¼ mo</text>
+        <text class="lag" x="259" y="124" text-anchor="middle">¼ mo</text>
+        <text class="lag" x="384" y="124" text-anchor="middle">¼ mo</text>
+        <text class="lag" x="509" y="124" text-anchor="middle">½ mo</text>
+        <text class="lag" x="634" y="124" text-anchor="middle">½ mo</text>
+
+        <path class="arrow r" d="M697,182 C697,250 322,250 322,186" marker-end="url(#ahr)"/>
+        <text class="lag" x="510" y="243" text-anchor="middle">R · illness and deaths cut the labour that brings food in · ½ mo</text>
+        <path class="arrow b" d="M720,182 C720,312 197,312 197,186" marker-end="url(#ahb)"/>
+        <text class="lag" x="458" y="304" text-anchor="middle">B · deaths trigger an aid surge, reopening access · ½ mo</text>
+      </svg>
+    </div>
+    <figcaption><span class="label">Figure 1</span><span>The Sudan model as a map of what depends on what.
+    Lags on the main links are in months. Two feedback loops close the chain: R reinforces (red, solid), B
+    balances (blue, dashed). Schematic; four secondary links (security to food, access to purchasing, food to
+    nutrition, displacement to access) are listed in section 05.</span></figcaption>
+  </figure>
+  <div class="takeaway">The model is a map of dependencies with a clock on every arrow. Everything else in part
+  one is the rules for how a shortage moves along it.</div>
+</section>
+
+<!-- 02 -->
+<section class="sec" id="s02">
+  <div class="sechead"><span class="label">Section 02</span><span class="tag">the scale</span></div>
+  <h2>Putting a famine on a line from 0 to 1</h2>
+  <div class="col">
+    <p>You cannot compare a death rate with a food price until both are on the same scale. So every domain gets a
+    score <span class="mono">x</span> between 0 and 1. Zero is severe shortage, 0.5 is normal, 1 is a large
+    surplus. The choice matters for how big an effect looks; it does not change which way anything moves.</p>
+    <p>The IPC scale that FEWS NET maps use is already an ordered scale of shortage, so it maps onto the bottom
+    half of the line. Famine needs three things to be true <em>in the same place at the same time</em>, which is
+    the single most important fact for the forecast.</p>
+  </div>
+  <figure>
+    <div class="fig-body">
+      <svg viewBox="0 0 760 170" role="img" aria-label="A 0 to 1 scale coloured by IPC phase, with today's levels for nutrition, survival and food in the worst-hit camps marked near the famine line.">
+        <rect x="40" y="70" width="102" height="30" style="fill:var(--ipc5)"/>
+        <rect x="142" y="70" width="68" height="30" style="fill:var(--ipc4)"/>
+        <rect x="210" y="70" width="88.4" height="30" style="fill:var(--ipc3)"/>
+        <rect x="298.4" y="70" width="54.4" height="30" style="fill:var(--ipc2)"/>
+        <rect x="352.8" y="70" width="54.4" height="30" style="fill:var(--ipc1)"/>
+        <rect x="407.2" y="70" width="312.8" height="30" style="fill:var(--panel)"/>
+        <text x="91" y="90" text-anchor="middle" style="font:600 11px var(--f-display);fill:#fff">FAMINE</text>
+        <text x="176" y="90" text-anchor="middle" style="font:600 11px var(--f-display);fill:#fff">EMERG.</text>
+        <text x="254" y="90" text-anchor="middle" style="font:600 11px var(--f-display);fill:#1f1100">CRISIS</text>
+        <text x="325" y="90" text-anchor="middle" style="font:600 11px var(--f-display);fill:#2e2a00">STRESS</text>
+        <text x="380" y="90" text-anchor="middle" style="font:600 11px var(--f-display);fill:#16310f">NORMAL</text>
+        <text x="563" y="90" text-anchor="middle" class="lbl">surplus side (unused for famine)</text>
+        <g class="ax">
+          <line x1="40" y1="104" x2="40" y2="110"/><text x="40" y="124" text-anchor="middle">0</text>
+          <line x1="142" y1="104" x2="142" y2="110"/><text x="142" y="124" text-anchor="middle">0.15</text>
+          <line x1="210" y1="104" x2="210" y2="110"/><text x="210" y="124" text-anchor="middle">0.25</text>
+          <line x1="380" y1="104" x2="380" y2="110"/><text x="380" y="124" text-anchor="middle">0.5</text>
+          <line x1="720" y1="104" x2="720" y2="110"/><text x="720" y="124" text-anchor="middle">1</text>
+        </g>
+        <text class="axtitle" x="40" y="150">x = domain health · 0 severe shortage · 0.5 normal · 1 surplus</text>
+        <line x1="135.2" y1="40" x2="135.2" y2="70" class="cross"/><circle cx="135.2" cy="40" r="4" class="facc"/>
+        <text x="129" y="30" text-anchor="end" class="endlbl">nutrition 0.14 (already past)</text>
+        <line x1="176" y1="54" x2="176" y2="70" class="cross"/><circle cx="176" cy="54" r="4" class="fink"/>
+        <line x1="182.8" y1="20" x2="182.8" y2="70" class="cross"/><circle cx="182.8" cy="20" r="4" class="fink"/>
+        <text x="190" y="24" class="endlbl">food 0.21</text>
+        <text x="184" y="58" class="endlbl">survival 0.20</text>
+      </svg>
+    </div>
+    <figcaption><span class="label">Figure 2</span><span>The model's scale with IPC phases laid on it, and
+    today's levels in the worst-hit displacement camps (FEWS NET, 8 Oct 2026). Wasting is already past the
+    Famine line; food and deaths are at Emergency. Schematic: the phase boundaries are this model's convention,
+    not IPC's.</span></figcaption>
+  </figure>
+  <div class="tbl"><table>
+    <thead><tr><th>IPC Famine needs all three</th><th>Threshold, natural units</th><th>On the model's line</th><th>Worst camps, Oct 2026</th></tr></thead>
+    <tbody>
+      <tr><td>Food consumption</td><td>≥ 20% of households with extreme food gaps</td><td class="num">food ≤ 0.15</td><td>Emergency</td></tr>
+      <tr><td>Acute malnutrition</td><td>Global acute malnutrition (GAM) ≥ 30%</td><td class="num">nutrition ≤ 0.15</td><td class="yes">Past threshold in 2 of 4 camps</td></tr>
+      <tr><td>Mortality</td><td>Crude death rate ≥ 2 per 10,000 per day</td><td class="num">survival ≤ 0.15</td><td>Emergency</td></tr>
+    </tbody>
+  </table></div>
+  <div class="takeaway">One of the three famine conditions is already met. The forecast turns on whether the other
+  two catch up before the year ends.</div>
+</section>
+
+<!-- 03 -->
+<section class="sec" id="s03">
+  <div class="sechead"><span class="label">Section 03</span><span class="tag">the dead-band</span></div>
+  <h2>Why most bad news fizzles</h2>
+  <div class="col">
+    <p>How hard does one domain drag another? The model answers with an <strong>influence function</strong>.
+    Inside a tolerance window (the dead-band, here ±0.05 around normal) a domain passes on nothing. Outside it,
+    the pull grows with the gap and then flattens out, because a domain in total collapse cannot drag its
+    neighbours infinitely hard.</p>
+    <p>The steepness of that curve is a parameter called sharpness. It is one of the numbers nobody can measure
+    directly, which is why section 11 tests what happens when it changes.</p>
+  </div>
+  <figure>
+    <div class="legend"><span><i style="background:var(--s1)"></i>sharpness 2 (used in the model)</span><span><i style="background:var(--s2)"></i>sharpness 4</span></div>
+    <div class="fig-body" id="fig-h"></div>
+    <figcaption><span class="label">Figure 3</span><span>Influence passed on by a domain, by how far it sits from
+    its normal. Flat at zero in the grey dead-band; bounded between −1 and +1 outside. Plotted from the model's
+    function. Hover for values.</span></figcaption>
+  </figure>
+  <div class="worth"><span class="label">Worth knowing</span>The dead-band is why a bad week rarely becomes a
+  famine. It is also why a slow, steady decline can be invisible to the model until it crosses the edge, at
+  which point the influence switches on all at once.</div>
+</section>
+
+<!-- 04 -->
+<section class="sec" id="s04">
+  <div class="sechead"><span class="label">Section 04</span><span class="tag">links and lags</span></div>
+  <h2>The order in which things break</h2>
+  <div class="col">
+    <p>Lags turn a map into a schedule. Hit the model with every shock at once (a siege, an aid cut and a surge
+    of displaced people) and watch each domain fall. Security goes first, because that is where the shock lands.
+    Deaths go last, because they sit at the end of the longest chain of delays.</p>
+  </div>
+  <figure>
+    <div class="legend" id="lg-order"></div>
+    <div class="fig-body" id="fig-order"></div>
+    <figcaption><span class="label">Figure 4</span><span>All three shocks at once, no noise. Each line is one
+    domain; the shaded band is below the Famine line. Famine conditions (food, nutrition and survival all in the
+    band) start at the dashed marker. Plotted from the model. Hover to read every domain at a given month.</span></figcaption>
+  </figure>
+  <div class="tbl"><table id="tbl-order">
+    <thead><tr><th>Domain</th><th class="num">Crosses famine line (months after 16 Oct)</th><th>Calendar</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <div class="takeaway">Even in the worst case the model can construct, the death rate reaches the Famine line
+  almost three months out. That single delay decides the forecast.</div>
+</section>
+
+<!-- 05 -->
+<section class="sec" id="s05">
+  <div class="sechead"><span class="label">Section 05</span><span class="tag">loops</span></div>
+  <h2>What makes a crisis feed itself, and what stops it</h2>
+  <div class="col">
+    <p>Follow the arrows and some paths come back to where they started. Those are loops. Multiply the signs
+    along a loop: positive means <strong>reinforcing</strong> (it makes itself worse), negative means
+    <strong>balancing</strong> (it corrects itself). Multiply the strengths and you get the loop's gain. A
+    reinforcing loop with gain above 1 runs away; below 1 it amplifies a push and then settles.</p>
+  </div>
+  <figure>
+    <div class="fig-body">
+      <svg viewBox="0 0 760 270" role="img" aria-label="Two loop diagrams. Left, a reinforcing loop from food to nutrition to survival and back to food. Right, a balancing loop from survival to access to food to nutrition and back to survival.">
+        <text class="axtitle" x="20" y="18">Reinforcing · the spiral</text>
+        <g class="node"><rect x="140" y="30" width="100" height="36"/><text x="190" y="53" text-anchor="middle">Food</text></g>
+        <g class="node"><rect x="250" y="190" width="100" height="36"/><text x="300" y="213" text-anchor="middle">Nutrition</text></g>
+        <g class="node"><rect x="30" y="190" width="100" height="36"/><text x="80" y="213" text-anchor="middle">Survival</text></g>
+        <path class="arrow r" d="M225,66 L290,186" marker-end="url(#ahr)"/>
+        <path class="arrow r" d="M248,208 L134,208" marker-end="url(#ahr)"/>
+        <path class="arrow r" d="M90,186 L155,70" marker-end="url(#ahr)"/>
+        <text class="bigletter fyes" x="190" y="160" text-anchor="middle">R</text>
+        <text class="lag" x="190" y="178" text-anchor="middle">gain 0.48 · lag 1.5 mo</text>
+        <text class="lag" x="190" y="252" text-anchor="middle">amplifies a push, then settles (gain &lt; 1)</text>
+
+        <text class="axtitle" x="410" y="18">Balancing · the brake</text>
+        <g class="node"><rect x="420" y="30" width="100" height="36"/><text x="470" y="53" text-anchor="middle">Access</text></g>
+        <g class="node"><rect x="630" y="30" width="100" height="36"/><text x="680" y="53" text-anchor="middle">Food</text></g>
+        <g class="node"><rect x="630" y="190" width="100" height="36"/><text x="680" y="213" text-anchor="middle">Nutrition</text></g>
+        <g class="node"><rect x="420" y="190" width="100" height="36"/><text x="470" y="213" text-anchor="middle">Survival</text></g>
+        <path class="arrow b" d="M520,48 L626,48" marker-end="url(#ahb)"/>
+        <path class="arrow b" d="M680,66 L680,186" marker-end="url(#ahb)"/>
+        <path class="arrow b" d="M630,208 L524,208" marker-end="url(#ahb)"/>
+        <path class="arrow b" d="M470,190 L470,70" marker-end="url(#ahb)"/>
+        <text class="lag" x="462" y="135" text-anchor="end">aid surge (−)</text>
+        <text class="bigletter fno" x="575" y="140" text-anchor="middle">B</text>
+        <text class="lag" x="575" y="158" text-anchor="middle">gain 0.58 · lag 1.75 mo</text>
+        <text class="lag" x="575" y="252" text-anchor="middle">pulls the system back, but slowly</text>
+      </svg>
+    </div>
+    <figcaption><span class="label">Figure 5</span><span>The two loops that matter in the Sudan model. Gains are
+    the model's activation gains (the strength right as the loop switches on). The brake has the higher gain but
+    the longer lag, so it arrives after the damage starts. Schematic layout; numbers from the model.</span></figcaption>
+  </figure>
+  <div class="tbl"><table id="tbl-loops">
+    <thead><tr><th>Loop</th><th>Type</th><th class="num">Activation gain</th><th class="num">Lag (months)</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <div class="worth"><span class="label">Worth knowing</span>No loop in this model has gain above 1. So the model
+  does not predict a runaway collapse; it predicts that a large enough push lands the camps in a new, lower
+  equilibrium. Whether that equilibrium is below the Famine line is what the Monte Carlo in section 09 counts.</div>
+</section>
+
+<!-- 06 -->
+<section class="sec" id="s06">
+  <div class="sechead"><span class="label">Section 06</span><span class="tag">adaptive set points</span></div>
+  <h2>The new normal</h2>
+  <div class="col">
+    <p>This is the framework's own idea, and it is the one most models leave out. Each domain is pulled back
+    toward a <em>normal</em> level, its set point. But the normal is not fixed. When everything around a place
+    stays poor for long enough, what counts as normal there drifts down to match.</p>
+    <p>The figure isolates the effect. A camp starts at the old normal of 0.5. Its neighbours sit at 0.3 and
+    never recover. Nothing pushes the camp directly; only its sense of normal is allowed to move. Within a year
+    it has settled at a lower level and treats it as home.</p>
+  </div>
+  <figure>
+    <div class="legend"><span><i style="background:var(--s1)"></i>state x (what is)</span><span><i class="dash" style="color:var(--s2)"></i>set point s (what counts as normal)</span></div>
+    <div class="fig-body" id="fig-setpoint"></div>
+    <figcaption><span class="label">Figure 6</span><span>A set point drifting toward its surroundings over 24
+    months, with the state following it down. Plotted from the model with the direct link switched off so only
+    the set point moves.</span></figcaption>
+  </figure>
+  <div class="col">
+    <p>After three and a half years of war, Darfur's camps are like this. Left alone, they do not drift back
+    toward peacetime levels; they hover at a crisis level. So the Sudan model anchors each domain at today's
+    crisis level, not at 0.5.</p>
+  </div>
+  <div class="takeaway">The model measures shortage against what people have adapted to. A place that has adapted
+  to misery only registers a <em>new</em> deterioration.</div>
+</section>
+
+<!-- 07 -->
+<section class="sec" id="s07">
+  <div class="sechead"><span class="label">Section 07</span><span class="tag">a trap we hit</span></div>
+  <h2>A shock that never ends</h2>
+  <div class="col">
+    <p>The first version of this model said famine was impossible, and it was wrong for an instructive reason.
+    It treated a surge of displaced people as a one-off kick to food. Every domain is pulled back toward its set
+    point, so the kick washed out within weeks.</p>
+    <p>A displacement surge is not a kick. More mouths on the same food is a <em>lasting</em> change. The obvious
+    fix, lowering food's normal, is also wrong: the model passes on influence by distance from normal, so a domain
+    whose normal fell with it passes on nothing, and starving people look normal. The right fix is a separate
+    <strong>driver</strong> that does not recover and keeps pushing.</p>
+  </div>
+  <figure>
+    <div class="legend"><span><i style="background:var(--s1)"></i>food</span><span><i style="background:var(--s3)"></i>survival</span><span><i class="dash" style="color:var(--ink-2)"></i>famine line</span></div>
+    <div class="fig-body" id="fig-kick"></div>
+    <figcaption><span class="label">Figure 7</span><span>The same displacement shock modelled two ways. Left: a
+    one-off kick to food, which mean-reversion undoes. Right: a driver node that keeps pushing, which carries
+    food and then survival below the Famine line. Plotted from the model.</span></figcaption>
+  </figure>
+  <div class="worth"><span class="label">Worth knowing for Q&amp;A</span>This is a general rule for the framework,
+  not a Sudan detail. Anything that persists (a siege, a sanction, a closed pipeline) must enter as a driver.
+  Model it as an initial shock and the system will forget it.</div>
+</section>
+
+<!-- 08 -->
+<section class="sec" id="s08">
+  <div class="sechead"><span class="label">Section 08</span><span class="tag">objective vs reported</span></div>
+  <h2>Reality and the report are two different events</h2>
+  <div class="col">
+    <p>The framework keeps two layers apart: what is happening and what is perceived or recorded. For this
+    question the gap is decisive. The question does not resolve on famine. It resolves on a FEWS NET
+    <em>map</em> showing Phase 5, with a report date before 1 January 2027.</p>
+  </div>
+  <figure>
+    <div class="fig-body">
+      <svg viewBox="0 0 760 200" role="img" aria-label="Four steps from conditions to resolution: conditions cross all three thresholds, someone measures it, FEWS NET maps Phase 5, and the map is dated before January 1.">
+        <g class="node"><rect x="10" y="40" width="165" height="76"/><text x="92" y="66" text-anchor="middle">1 · Conditions</text><text class="sub" x="92" y="84" text-anchor="middle">all three thresholds</text><text class="sub" x="92" y="100" text-anchor="middle">crossed together</text></g>
+        <g class="node"><rect x="200" y="40" width="165" height="76"/><text x="282" y="66" text-anchor="middle">2 · Measured</text><text class="sub" x="282" y="84" text-anchor="middle">a survey reaches</text><text class="sub" x="282" y="100" text-anchor="middle">the area</text></g>
+        <g class="node"><rect x="390" y="40" width="165" height="76"/><text x="472" y="66" text-anchor="middle">3 · Mapped</text><text class="sub" x="472" y="84" text-anchor="middle">FEWS NET classifies</text><text class="sub" x="472" y="100" text-anchor="middle">Phase 5, current period</text></g>
+        <g class="node"><rect x="580" y="40" width="170" height="76" style="stroke:var(--accent);stroke-width:2"/><text x="665" y="66" text-anchor="middle">4 · Resolves YES</text><text class="sub" x="665" y="84" text-anchor="middle">map reported</text><text class="sub" x="665" y="100" text-anchor="middle">before 1 Jan 2027</text></g>
+        <path class="arrow" d="M175,78 L197,78" marker-end="url(#ah)"/>
+        <path class="arrow" d="M365,78 L387,78" marker-end="url(#ah)"/>
+        <path class="arrow" d="M555,78 L577,78" marker-end="url(#ah)"/>
+        <text class="lag" x="92" y="140" text-anchor="middle">the cascade model</text>
+        <text class="lag" x="92" y="155" text-anchor="middle">(sections 09–11)</text>
+        <text class="lag" x="377" y="140" text-anchor="middle">assessment, then publication:</text>
+        <text class="lag" x="377" y="155" text-anchor="middle">assumed P = 0.5, weeks of delay</text>
+        <text class="lag" x="665" y="140" text-anchor="middle">conditions must exist</text>
+        <text class="lag" x="665" y="155" text-anchor="middle">by about 1 December</text>
+        <line x1="10" y1="175" x2="750" y2="175" class="cross"/>
+        <text class="axtitle" x="10" y="193">Objective layer</text>
+        <text class="axtitle" x="750" y="193" text-anchor="end">Reported layer</text>
+      </svg>
+    </div>
+    <figcaption><span class="label">Figure 8</span><span>From hunger to a YES. The model forecasts step 1; steps 2
+    and 3 add delay and a chance of non-detection; step 4 sets the deadline. Schematic.</span></figcaption>
+  </figure>
+  <div class="takeaway">Assessment and publication take weeks, so conditions have to exist by about
+  1 December to appear on a map dated in time. The model's real horizon is six weeks, not eleven.</div>
+</section>
+
+<!-- 09 -->
+<section class="sec" id="s09">
+  <div class="sechead"><span class="label">Section 09</span><span class="tag">monte carlo</span></div>
+  <h2>From one run to a probability</h2>
+  <div class="col">
+    <p>A single run answers "what if". A forecast needs "how often". Nobody knows the link strengths exactly,
+    nobody knows which shocks will hit, and the world adds noise. So the model is run 1,500 times. Each run
+    draws its own link strengths (±35%), its own shocks (displacement surge 30%, siege 30%, aid cut 25%, each
+    taken from FEWS NET's named downside scenarios) and its own noise. Counting the runs that hit famine
+    conditions turns the model into a probability.</p>
+  </div>
+  <figure>
+    <div class="legend"><span><i style="background:var(--accent)"></i>run reaches famine conditions within 6 months</span><span><i style="background:var(--ink-3)"></i>run stays out</span><span><i class="dash" style="color:var(--accent)"></i>famine line</span></div>
+    <div class="fig-body" id="fig-fan"></div>
+    <figcaption><span class="label">Figure 9</span><span>Survival (death-rate health) in 90 of the 1,500 runs.
+    Dashed vertical lines mark 1 December and 1 January. Hover for the share of shown runs already below the
+    line at each month. Plotted from the model.</span></figcaption>
+  </figure>
+  <div class="col">
+    <p>The figure already shows the answer. Plenty of runs fall below the Famine line. Almost none do it before
+    December. The question is not really whether the crisis worsens. It is whether it worsens fast enough.</p>
+  </div>
+</section>

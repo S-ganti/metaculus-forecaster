@@ -1,0 +1,193 @@
+<div class="part"><span class="label">Part two</span><span class="big">The prediction</span></div>
+
+<!-- 10 -->
+<section class="sec" id="s10">
+  <div class="sechead"><span class="label">Section 10</span><span class="tag">the question, exactly</span></div>
+  <h2>Which questions earn the model</h2>
+  <div class="col">
+    <p>Most forecasts go wrong by answering a slightly different question from the one that will be scored. Here
+    is the one being scored, word for word in substance:</p>
+  </div>
+  <div class="onesent" style="margin:1.2rem 0">
+    <span class="label">Metaculus · question 45464 · 152 forecasters · community 25%</span>
+    <p style="font-size:1.1rem">Resolves YES if any FEWS NET classification map with a "Reported" date after
+    August 2026 and before January 2027 shows at least one area, urban settlement or displacement settlement in
+    <b>IPC Phase 5: Famine</b> for the current period. Phase 4 areas marked "!" (would likely be Phase 5 without
+    assistance) do not count.</p>
+  </div>
+  <div class="col">
+    <p>The model only earns its place when a question has all four of the properties from section 01 plus a
+    feedback loop. On 16 October five open Metaculus questions were forecast. Only one passed.</p>
+  </div>
+  <figure>
+    <div class="tbl" style="margin:0"><table>
+      <thead><tr><th>Question</th><th>Coupled domains</th><th>Shock spreads</th><th>Feedback loop</th><th>Lags matter</th><th>Route</th><th class="num">Forecast</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td><strong>FEWS NET classifies famine in Sudan before 2027</strong></td><td class="chk">✓ yes</td><td class="chk">✓ yes</td><td class="chk">✓ yes</td><td class="chk">✓ yes</td><td><strong>B · network</strong></td><td class="num" id="fc-sudan">23.5%</td></tr>
+        <tr><td>Democrats hold most House seats after the midterms</td><td class="chk">— no</td><td class="chk">— no</td><td class="chk">— no</td><td class="chk">— no</td><td>A · base rate</td><td class="num">90.0%</td></tr>
+        <tr><td>Venezuela announces an election date before 2027</td><td class="chk">— no</td><td class="chk">— no</td><td class="chk">— no</td><td class="chk">✓ yes</td><td>A · base rate</td><td class="num">7.7%</td></tr>
+        <tr><td>Johnson remains Speaker until 3 January 2027</td><td class="chk">— no</td><td class="chk">— no</td><td class="chk">— no</td><td class="chk">— no</td><td>A · base rate</td><td class="num">88.7%</td></tr>
+        <tr><td>Kennedy Center demolished before 2027</td><td class="chk">— no</td><td class="chk">— no</td><td class="chk">— no</td><td class="chk">✓ yes</td><td>A · base rate</td><td class="num">4.7%</td></tr>
+      </tbody>
+    </table></div>
+    <figcaption><span class="label">Figure 10</span><span>The route test applied to the batch of 16 October.
+    Route A questions are single-shot events forecast from base rates and news; the network sits out. Forecasts
+    shown as pre-registered (calibration slope 0.9; see section 13).</span></figcaption>
+  </figure>
+</section>
+
+<!-- 11 -->
+<section class="sec" id="s11">
+  <div class="sechead"><span class="label">Section 11</span><span class="tag">the timing curve</span></div>
+  <h2>The answer is a date, not a yes or no</h2>
+  <div class="col">
+    <p>Take the 1,500 runs and ask, for each month ahead, what share have reached famine conditions by then.
+    That cumulative curve is the model's whole forecast. Read it against the two deadlines from section 08.</p>
+  </div>
+  <figure>
+    <div class="legend" id="lg-horizon"></div>
+    <div class="fig-body" id="fig-horizon"></div>
+    <figcaption><span class="label">Figure 11</span><span>Share of runs with famine conditions in the worst-hit
+    camps, by months after 16 October, overall and split by which shocks hit. The flat start is the lag chain
+    from section 04. Plotted from the model. Hover for values.</span></figcaption>
+  </figure>
+  <div class="verdict" id="verdict-horizon"></div>
+  <div class="col">
+    <p>Split by branch, the picture is starker than the average. In this model any one of the three shocks is
+    enough to reach famine conditions within about four months, and no run without a new shock gets there at
+    all. The 61% plateau is simply the chance that at least one shock hits. So the model's uncertainty is about
+    whether a shock lands and how fast the chain runs, not about whether a shocked camp tips.</p>
+  </div>
+  <div class="worth"><span class="label">A limitation to say out loud</span>A model where every shocked camp
+  tips is too tidy. Real aid surges, migrations onward and harvest variation would let some shocked camps hold.
+  That is a second reason the model enters the forecast as evidence at modest weight rather than as the
+  answer.</div>
+  <div class="col">
+    <p>The weakest link in that statement is the lags. They are judgement, not measurement. So the same 1,500-run
+    experiment was repeated with every lag halved, cut by a quarter and stretched by half.</p>
+  </div>
+  <figure>
+    <div class="legend"><span><i class="dot" style="background:var(--s1)"></i>by 1 December (the real deadline)</span><span><i class="dot" style="background:var(--s2)"></i>by mid-January</span></div>
+    <div class="fig-body" id="fig-lag"></div>
+    <figcaption><span class="label">Figure 12</span><span>Sensitivity of the model's probability to the lag
+    assumption, 600 runs per bar. The December answer barely moves; the January answer swings tenfold.
+    Plotted from the model. Hover for values.</span></figcaption>
+  </figure>
+  <div class="takeaway">The model is confident about one thing and unsure about another. It is confident famine
+  conditions will not form in the camps it models before December, even with every lag halved. It is unsure
+  how soon after that they come.</div>
+</section>
+
+<!-- 12 -->
+<section class="sec" id="s12">
+  <div class="sechead"><span class="label">Section 12</span><span class="tag">from model to number</span></div>
+  <h2>Why the model's near-zero is not the forecast</h2>
+  <div class="col">
+    <p>A model that says 0.1% should not be submitted as 0.1%. This one watches the assessed camps. It does not
+    model besieged towns such as Kadugli and Dilling, where FEWS NET says some households already face Phase 5
+    and survey access is poor. That is the framework's "omitted node" risk, and it is exactly where a surprise
+    classification would come from.</p>
+    <p>So the cascade enters as <strong>one piece of evidence</strong> among several. Each piece is a likelihood
+    ratio: how much more likely this fact is in a world where the answer is YES. Ratios multiply the odds, which
+    means they add on a log-odds scale. Starting from the base rate, the ledger below walks to the inside view.</p>
+  </div>
+  <figure>
+    <div class="legend"><span><i style="background:var(--yes)"></i>pushes toward YES</span><span><i style="background:var(--no)"></i>pushes toward NO</span><span><i style="background:var(--ink-2)"></i>start and end</span></div>
+    <div class="fig-body" id="fig-ledger"></div>
+    <figcaption><span class="label">Figure 13</span><span>The evidence ledger as a waterfall. Bar length is
+    each item's pull on the log-odds (likelihood ratio times source reliability); the axis is labelled in
+    probability. Plotted from the ledger. Hover for the source and date of each item.</span></figcaption>
+  </figure>
+  <div class="tbl"><table id="tbl-ledger">
+    <thead><tr><th>Evidence</th><th>Source, date</th><th class="num">Likelihood ratio</th><th class="num">Reliability</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <div class="worth"><span class="label">Worth knowing</span>Social sentiment is in the ledger but capped: it
+  can move the odds by at most 25% and carries half weight. Chatter is a biased sample, drawn to drama, and
+  nothing yet shows it beats the Metaculus crowd. <span id="sent-line"></span></div>
+</section>
+
+<!-- 13 -->
+<section class="sec" id="s13">
+  <div class="sechead"><span class="label">Section 13</span><span class="tag">the forecast</span></div>
+  <h2>Meeting the crowd</h2>
+  <div class="col">
+    <p>The inside view does not stand alone. The Metaculus community is an aggregate of many forecasters with a
+    good record, so it enters as a strong prior. The two are fused on the log-odds scale, each weighted by how
+    much it is trusted: the community at 4, the inside view at 1.5. A confident inside view moves the result;
+    it cannot take it over.</p>
+  </div>
+  <div class="verdict" id="verdict-final"></div>
+  <figure>
+    <div class="fig-body" id="fig-fusion"></div>
+    <figcaption><span class="label">Figure 14</span><span>Every estimate on one scale, with 90% intervals for
+    the fused forecasts. The base rate and inside view are inputs; the community and inside view are what gets
+    fused. Plotted from the model. Hover for values.</span></figcaption>
+  </figure>
+  <div class="worth"><span class="label">One decision still open</span>The pre-registered number applies a
+  calibration slope of 0.9 after fusion, which pulls every answer toward 50%. Because the community is already
+  calibrated, that pull lands the final above both inputs on some questions. With the slope at 1.0 the forecast
+  is <span id="alt-forecast"></span>. The toolkit's rules require sign-off before changing calibration, so both are
+  shown.</div>
+</section>
+
+<!-- 14 -->
+<section class="sec" id="s14">
+  <div class="sechead"><span class="label">Section 14</span><span class="tag">what would move it</span></div>
+  <h2>Five things to watch before 31 December</h2>
+  <div class="col">
+    <p>A forecast is only useful if you know what would change it. These are the signals, in the order they are
+    likely to arrive.</p>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>#</th><th>Signal</th><th>Direction</th><th>Why it bites</th></tr></thead>
+    <tbody>
+      <tr><td class="num">01</td><td>FEWS NET October Key Message Update (early November)</td><td>Up sharply if any area is mapped Phase 5</td><td>It is the resolution source. A Phase 5 area on a map dated before 1 January resolves the question on its own.</td></tr>
+      <tr><td class="num">02</td><td>New Food Security Outlook, October to May (due around November)</td><td>Up if the current-period map shows Phase 5; down if it repeats "risk of Famine"</td><td>The longer product carries the current-period classification the question reads.</td></tr>
+      <tr><td class="num">03</td><td>Mortality surveys in East Jebel Marra camps</td><td>Up if crude death rates approach 2 per 10,000 per day</td><td>Deaths are the last of the three thresholds, and the model's slowest link.</td></tr>
+      <tr><td class="num">04</td><td>Reports from besieged Kadugli and Dilling</td><td>Up if surveys get in and find famine</td><td>The omitted node. A classification here would bypass the camp chain entirely.</td></tr>
+      <tr><td class="num">05</td><td>Harvest outcomes and aid funding</td><td>Down if the harvest holds and WFP rations continue</td><td>These feed the balancing loop that keeps the camps above the line.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="takeaway">The cleanest prediction here is a non-event: the camps the model watches stay off the
+  Famine map this year, then face a real risk between January and March. Both halves can be scored.</div>
+</section>
+
+<!-- 15 -->
+<section class="sec" id="s15">
+  <div class="sechead"><span class="label">Reference</span><span class="tag">glossary</span></div>
+  <h2>Glossary</h2>
+  <div class="gloss">
+    <div><b>Activation gain</b><span>A loop's strength at the moment it switches on. Above 1 with reinforcing sign means runaway.</span></div>
+    <div><b>Balancing loop</b><span>A loop whose signs multiply to negative. It pulls a system back toward where it was.</span></div>
+    <div><b>Base rate</b><span>How often this kind of thing has happened before. The forecast's starting point.</span></div>
+    <div><b>Calibration slope</b><span>A post-fusion adjustment on the log-odds scale. Below 1 pulls toward 50%.</span></div>
+    <div><b>Dead-band</b><span>The tolerance window inside which a domain passes on no influence.</span></div>
+    <div><b>Driver node</b><span>An external push that does not recover on its own. The right way to model a lasting shock.</span></div>
+    <div><b>FEWS NET</b><span>Famine Early Warning Systems Network. Publishes the maps this question resolves on.</span></div>
+    <div><b>GAM</b><span>Global acute malnutrition: the share of young children who are wasted. Famine threshold 30%.</span></div>
+    <div><b>IPC</b><span>Integrated Food Security Phase Classification, the five-phase scale from Minimal to Famine.</span></div>
+    <div><b>Likelihood ratio</b><span>How much more likely a fact is if the answer is YES than if it is NO.</span></div>
+    <div><b>Log-odds</b><span>The scale on which independent evidence adds. Probability 50% is 0; 12% is about −2.</span></div>
+    <div><b>Monte Carlo</b><span>Running the model many times with uncertain inputs drawn at random, and counting outcomes.</span></div>
+    <div><b>Reinforcing loop</b><span>A loop whose signs multiply to positive. It makes a change bigger.</span></div>
+    <div><b>Set point</b><span>What counts as normal for a domain. In this framework it drifts with its surroundings.</span></div>
+  </div>
+  <div class="source">
+    <p><strong>Source.</strong> Current conditions come from the FEWS NET Sudan Key Message Update of 8 October
+    2026 (via ReliefWeb) and the Metaculus question page, both read on 16 October 2026. IPC Famine thresholds are
+    from the IPC Technical Manual. News evidence was gathered through Google News and a public Reddit archive on
+    the same date. The model, its parameters and every likelihood ratio are judgement; they live as data in the
+    toolkit's <span class="mono">cascades.py</span> and <span class="mono">questions.py</span> so they can be argued
+    with. Figures 1, 2, 5 and 8 are schematic; all others are plotted from model output generated by
+    <span class="mono">reports/article_data.py</span>.</p>
+    <p><strong>Two corrections carried over.</strong> An earlier version of the cascade modelled the
+    displacement surge as a one-off shock and reported famine as near-impossible at any horizon; section 07
+    explains why that was wrong. A second version modelled an average area of Darfur rather than the worst-hit
+    camps, which the question's "any area" wording rules out.</p>
+  </div>
+  <footer class="run">The Slow Arithmetic of Hunger · companion to the Metaculus Forecaster, part one · pre-registered 16 October 2026</footer>
+</section>
+
+</div>
+<div class="tip" id="tip" hidden></div>
